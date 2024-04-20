@@ -1,11 +1,6 @@
-import 'dart:math';
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rick_morty_app/features/home/ui/screen/home_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   static const name = "onboardingscreen";
@@ -107,7 +102,9 @@ class OnboardingScreen extends StatelessWidget {
                 Align(
                   alignment: const AlignmentDirectional(0, 0),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed(HomeScreen.name);
+                    },
                     style: ButtonStyle(
                       // Configura el fondo del botón
                       backgroundColor:
