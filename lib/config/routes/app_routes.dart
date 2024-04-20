@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:rick_morty_app/features/details/ui/screen/details_screen.dart';
 import 'package:rick_morty_app/features/home/ui/screen/home_screen.dart';
 import 'package:rick_morty_app/features/onboarding/ui/screen/onboarding_screen.dart';
 
@@ -14,6 +15,11 @@ final appRoutes = GoRouter(
       path: '/home_screen',
       name: HomeScreen.name,
       builder: (_, __) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: '/detail_screen',
+      name: DetailScreen.name,
+      builder: (_, __) => const DetailScreen(),
     ),
   ],
 );
