@@ -17,9 +17,13 @@ final appRoutes = GoRouter(
       builder: (_, __) => const HomeScreen(),
     ),
     GoRoute(
-      path: '/detail_screen',
+      path: '/detail_screen/:id',
       name: DetailScreen.name,
-      builder: (_, __) => const DetailScreen(),
+      builder: (contex, state) {
+        final String? id = state.pathParameters["id"];
+
+        return DetailScreen(id: id ?? 'default id');
+      },
     ),
   ],
 );

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:rick_morty_app/features/home/ui/screen/home_screen.dart';
 
 class OutlineButtonWidget extends StatelessWidget {
   const OutlineButtonWidget({

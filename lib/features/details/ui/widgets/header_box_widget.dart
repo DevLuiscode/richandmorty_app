@@ -3,41 +3,47 @@ import 'package:flutter/material.dart';
 class HeaderBoxWidget extends StatelessWidget {
   const HeaderBoxWidget({
     super.key,
+    required this.name,
+    required this.gender,
+    required this.state,
   });
-
+  final String name;
+  final String gender;
+  final String state;
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Morbius",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 32,
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 32,
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
               ),
-            ),
-            Text(
-              "Marbel Studios",
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
+              Text(
+                gender,
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 12,
+                ),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(width: 8),
-        const Text(
-          "2022",
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 12,
+            ],
           ),
         ),
-        const Spacer(),
+        const SizedBox(width: 8),
+        Icon(
+          Icons.circle,
+          color: state == "Alive" ? Colors.green : Colors.red,
+        ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
