@@ -1,29 +1,19 @@
 part of 'charter_bloc.dart';
 
-sealed class CharterState extends Equatable {
-  const CharterState();
+enum CharterStatus { initial, loading, succes, error }
 
-  @override
-  List<Object> get props => [];
-}
-
-class CharterInitialState extends CharterState {}
-
-class CharterLoadingState extends CharterState {}
-
-class CharterFealureState extends CharterState {}
-
-class CharterSuccesState extends CharterState {
+class CharterState extends Equatable {
   final List<CharterEntity> charters;
+  final CharterStatus status;
 
-  const CharterSuccesState({required this.charters});
+  const CharterState({required this.charters, required this.status});
 
-  CharterSuccesState copyWith({
+  CharterState copyWith({
     List<CharterEntity>? charters,
+    CharterStatus? status,
   }) =>
-      CharterSuccesState(
-        charters: charters ?? this.charters,
-      );
+      CharterState(
+          charters: charters ?? this.charters, status: status ?? this.status);
 
   @override
   List<Object> get props => [charters];

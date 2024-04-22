@@ -18,7 +18,9 @@ class HomeScreen extends StatelessWidget {
         charterRepository: CharterRepositoryImpl(
           charterDatasource: CharterDatasource(),
         ),
-      )..add(const FetchCharters()),
+      )
+        ..init()
+        ..add(const FetchCharters()),
       child: const Scaffold(
         backgroundColor: Color(0XFF292929),
         body: Padding(

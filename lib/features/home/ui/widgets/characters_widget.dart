@@ -11,18 +11,20 @@ class CharactersWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final charterBloc = context.read<CharterBloc>();
     return BlocBuilder<CharterBloc, CharterState>(
       builder: (context, state) {
-        if (state is CharterLoadingState) {
+        if (state.status == CharterStatus.loading) {
           return const Expanded(
             child: Center(
               child: CircularProgressIndicator(),
             ),
           );
         }
-        if (state is CharterSuccesState) {
+        if (state.status == CharterStatus.succes) {
           return Expanded(
             child: GridView.builder(
+              controller: charterBloc.scrollController,
               padding: EdgeInsets.zero,
               itemCount: state.charters.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

@@ -15,6 +15,11 @@ class HeaderBoxWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Icon(
+          Icons.circle,
+          color: state == "Alive" ? Colors.green : Colors.red,
+        ),
+        const SizedBox(width: 8),
         Flexible(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,11 +43,6 @@ class HeaderBoxWidget extends StatelessWidget {
               ),
             ],
           ),
-        ),
-        const SizedBox(width: 8),
-        Icon(
-          Icons.circle,
-          color: state == "Alive" ? Colors.green : Colors.red,
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,

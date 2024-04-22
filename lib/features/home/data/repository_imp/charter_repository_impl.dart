@@ -8,9 +8,9 @@ class CharterRepositoryImpl extends CharterRepository {
 
   CharterRepositoryImpl({required this.charterDatasource});
   @override
-  Future<List<CharterEntity>> fetchCharters() async {
+  Future<List<CharterEntity>> fetchCharters({required int page}) async {
     final List<CharterResult> responseDatasource =
-        await charterDatasource.fetchCharters();
+        await charterDatasource.fetchCharters(page: page);
 
     final mapResultoToEntity = responseDatasource
         .map(

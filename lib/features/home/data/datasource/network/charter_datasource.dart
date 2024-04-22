@@ -3,11 +3,13 @@ import 'package:rick_morty_app/features/home/data/datasource/network/model/chart
 import 'package:rick_morty_app/features/home/data/datasource/network/model/charter_result.dart';
 
 class CharterDatasource {
-  Future<List<CharterResult>> fetchCharters() async {
+  Future<List<CharterResult>> fetchCharters({required int page}) async {
     final dio = Dio();
     try {
-      Response response =
-          await dio.get('https://rickandmortyapi.com/api/character');
+      Response response = await dio
+          .get("https://rickandmortyapi.com/api/character/", queryParameters: {
+        "page": page,
+      });
 
       final chartersApiDb = CharterApiDb.fromJson(response.data);
 
