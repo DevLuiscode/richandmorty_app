@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FocusNode focusNode = FocusNode();
     return BlocProvider(
       create: (context) => CharterBloc(
         charterRepository: CharterRepositoryImpl(
@@ -21,38 +22,46 @@ class HomeScreen extends StatelessWidget {
       )
         ..init()
         ..add(const FetchCharters()),
-      child: const Scaffold(
-        backgroundColor: Color(0XFF292929),
-        body: Padding(
-          padding: EdgeInsets.fromLTRB(20, kToolbarHeight * 1.3, 30, 10),
-          child: SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  "Search for a content",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 16,
+      child: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).requestFocus(FocusNode());
+        },
+        child: Scaffold(
+          backgroundColor: Color(0XFF292929),
+          body: Padding(
+            padding:
+                const EdgeInsets.fromLTRB(20, kToolbarHeight * 1.3, 30, 10),
+            child: SizedBox(
+              height: double.infinity,
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    "Search for a content",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-                SizedBox(height: 16),
-                SearchWidget(),
-                SizedBox(height: 16),
-                Text(
-                  "Characters",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    color: Colors.white,
-                    fontSize: 14,
+                  const SizedBox(height: 16),
+                  SearchWidget(
+                    focusNode: focusNode,
                   ),
-                ),
-                SizedBox(height: 16),
-                CharactersWidget(),
-              ],
+                  const SizedBox(height: 16),
+                  const Text(
+                    "Characters",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const CharactersWidget(),
+                ],
+              ),
             ),
           ),
         ),

@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_morty_app/features/home/ui/blocs/charter_bloc/charter_bloc.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({
     super.key,
+    required this.focusNode,
   });
+
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController searchController = TextEditingController();
+
+    final characterBloc = context.read<CharterBloc>();
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
@@ -35,24 +43,36 @@ class SearchWidget extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(2.0),
-        child: TextFormField(
-          decoration: InputDecoration(
-            hintText: "Search for a content",
-            hintStyle: const TextStyle(
-              color: Colors.grey,
-              fontSize: 12,
-            ),
-            filled: true,
-            fillColor: const Color(0XFF0f0f11),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: const BorderSide(color: Colors.transparent),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: const BorderSide(color: Colors.transparent),
-            ),
-          ),
+        child: BlocBuilder<CharterBloc, CharterState>(
+          builder: (context, state) {
+            return TextFormField(
+              controller: searchController,
+              onChanged: (query) {
+                return characterBloc.add(
+                  SearchChartersEvent(searchController.text),
+                );
+              },
+              style: const TextStyle(color: Colors.grey),
+              decoration: InputDecoration(
+                focusColor: Colors.white,
+                hintText: "Search for a content",
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 12,
+                ),
+                filled: true,
+                fillColor: const Color(0XFF0f0f11),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(color: Colors.transparent),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(color: Colors.transparent),
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

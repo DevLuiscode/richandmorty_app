@@ -10,3 +10,20 @@ sealed class CharterEvent extends Equatable {
 class FetchCharters extends CharterEvent {
   const FetchCharters();
 }
+
+class RefreshEvent extends CharterEvent {
+  const RefreshEvent(this.refresh);
+  final bool refresh;
+
+  @override
+  List<Object> get props => [refresh];
+}
+
+class SearchChartersEvent extends CharterEvent {
+  final String query;
+
+  const SearchChartersEvent(this.query);
+
+  @override
+  List<Object> get props => [query];
+}
