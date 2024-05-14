@@ -6,7 +6,7 @@ Welcome to the Rick and Morty App Repository, a mobile app designed to give fans
 
 ## Download APK
 Download the latest version of the app:
-<a href="https://zphhqkbfmmilwzqcmdgu.supabase.co/storage/v1/object/public/profile/tiktok_clone.apk?t=2024-05-14T20%3A22%3A31.220Z">Download APK</a>
+<a href="https://zphhqkbfmmilwzqcmdgu.supabase.co/storage/v1/object/public/profile/rickandmorty.apk?t=2024-05-14T22%3A09%3A07.227Z">Download APK</a>
 
 ## Characteristics
 
@@ -37,7 +37,7 @@ You will need the following tools installed on your machine:
 ### Facility
 Clone the repository:
 ```play
-git clone https://github.com/DevLuiscode/rickandmortyapp.git
+git clone https://github.com/DevLuiscode/richandmorty_app.git
 cd rickandmortyapp
 ```
 Install dependencies:
