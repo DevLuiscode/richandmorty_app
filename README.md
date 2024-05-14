@@ -11,8 +11,6 @@ Download the latest version of the app:
 ## Characteristics
 
 - **Character Navigation**: Browse through a complete list of Rick and Morty characters, with detailed profiles.
-- **Episode Guide**: Explore episodes, with detailed synopses and air dates.
-- **Favorites**: Users can mark characters and episodes as favorites for quick access.
 - **Clean Architecture**: The application is structured using a clean architecture, ensuring scalability, maintainability and testability.
 - **Flutter Bloc**: Use Flutter Bloc for efficient state management in different modules of the application.
 
